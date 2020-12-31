@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Monty Hall</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/e83caaa360.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js"
+      integrity="sha512-SuxO9djzjML6b9w9/I07IWnLnQhgyYVSpHZx0JV97kGBfTIsUYlWflyuW4ypnvhBrslz1yJ3R+S14fdCWmSmSA=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="scripts.js"></script>
+  </head>
+
+  <body>
+    <br />
+    <div class="container">
+      <div class="pt-1 pb-1 row">
+        <div class="col-8">
+          <h6>The Monty Hall problem</h6>
+          <p class="font-italic text-justify">
+            Let's assume a TV show where we are given a choice between three
+            doors. Behind one door there is a car, behind the other two there
+            are goats. We can choose a door, at which point the host (who knows
+            what is behind every door) opens a different door, showing a goat.
+          </p>
+          <p class="font-italic text-justify">
+            He then offers the choice of switching our selection of doors, or
+            sticking with the one already chosen. The question is: Should we
+            switch the door chosen, or stay with the one we first chose?
+          </p>
+        </div>
+        <div class="col-4">
+          <figure class="figure">
+            <img
+              src="https://imgs.xkcd.com/comics/monty_hall.png"
+              class="figure-img img-fluid rounded"
+            />
+            <figcaption class="figure-caption text-right">
+              XKCD's solution to the problem
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="pt-1 pb-1 row border-top">
+        <div class="col-4">
+          <label class="h6">Number of games to play (max. 1 million)</label>
+          <div class="input-group">
+            <input
+              class="form-control"
+              type="number"
+              min="0"
+              max="1000000"
+              step="100"
+              value="1000"
+              id="gamesCount"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="playGames"
+              >
+                Play
+              </button>
+            </div>
+          </div>
+          <p class="sub font-italic text-justify">
+            <sub
+              >The alternating scenario variant calculates the odds of winning
+              if one alternates between staying or switching door selection in
+              subsequent games</sub
+            >
+          </p>
+        </div>
+        <div class="border-left col-4">
+          <canvas
+            id="chart-area"
+            style="display: block; height: 50%; width: 50%"
+            class="chartjs-render-monitor"
+          ></canvas>
+        </div>
+        <div class="border-left col-4">
+          <canvas
+            id="chart-area-alter"
+            style="display: block; height: 50%; width: 50%"
+            class="chartjs-render-monitor"
+          ></canvas>
+        </div>
+      </div>
+      <div class="pt-1 pb-1 row border-top">
+        <div class="col-12">
+          <canvas
+            id="canvas"
+            style="display: block; height: 528px; width: 100%"
+            class="chartjs-render-monitor"
+          ></canvas>
+        </div>
+      </div>
+    </div>
+    <script>
+      init();
+      $("#playGames").click();
+    </script>
+  </body>
+</html>
